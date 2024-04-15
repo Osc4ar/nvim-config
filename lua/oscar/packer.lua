@@ -6,19 +6,25 @@ return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.1',
-	  -- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-  } 
+      "nvim-telescope/telescope.nvim",
+      requires = {
+        { "nvim-telescope/telescope-live-grep-args.nvim" },
+      },
+      config = function()
+        require("telescope").load_extension("live_grep_args")
+      end
+  }
 
   use { "bluz71/vim-moonfly-colors", as = "moonfly" }
+  use { "catppuccin/nvim", as = "catppuccin" }
 
   use ('nvim-treesitter/nvim-treesitter', {run =':TSUpdate'})
 
   use('itchyny/lightline.vim')
   use('ThePrimeagen/harpoon')
   use('tpope/vim-fugitive')
-  
+  use('airblade/vim-gitgutter')
+
   use {
 	  'VonHeikemen/lsp-zero.nvim',
 	  branch = 'v1.x',
@@ -41,4 +47,19 @@ return require('packer').startup(function(use)
 		  {'rafamadriz/friendly-snippets'}, -- Optional
 	  }
   }
+
+
+  use {
+      'akinsho/flutter-tools.nvim',
+      requires = {
+          'nvim-lua/plenary.nvim',
+          'stevearc/dressing.nvim', -- optional for vim.ui.selecting
+      },
+  }
+
+   -- Clojure REPL
+  use('tpope/vim-dispatch')
+  use('Olical/conjure')
+  use('clojure-vim/vim-jack-in')
+  use('radenling/vim-dispatch-neovim')
 end)
