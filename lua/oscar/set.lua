@@ -1,7 +1,13 @@
 vim.opt["termguicolors"] = true
-vim.cmd([[colorscheme moonfly]])
+
+require('catppuccin').setup({
+    flavour = 'mocha',
+    transparent_background = true,
+})
+vim.cmd([[colorscheme catppuccin]])
 
 vim.cmd([[let g:lightline = { 'colorscheme': 'moonfly' }]])
+
 vim.g.moonflyCursorColor = true
 vim.g.moonflyTransparent = true
 
@@ -27,4 +33,6 @@ vim.opt.isfname:append("@-@")
 
 vim.opt.updatetime = 50
 
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "120"
+
+vim.opt.clipboard = "unnamedplus"
